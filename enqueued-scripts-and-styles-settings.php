@@ -154,3 +154,10 @@ function enqueued_scripts_and_styles_modify_enqueued_scripts_and_styles() {
         }
     }
 }
+
+// Elementor - Remove Font Awesome 
+add_action( 'elementor/frontend/after_register_styles',function() {
+    foreach( [ 'solid', 'regular', 'brands' ] as $style ) {
+      wp_deregister_style( 'elementor-icons-fa-' . $style );
+    }
+}, 20 );
